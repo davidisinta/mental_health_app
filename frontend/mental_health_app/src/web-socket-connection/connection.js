@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const WebSocketComponent = () => {
+    const [frameObjects, setFrameObjects] = useState([]);
+
     useEffect(() => {
         // WebSocket connection details
         const hillhouse_server = "cpsc484-03.stdusr.yale.internal";
@@ -17,6 +19,12 @@ const WebSocketComponent = () => {
         socket.onmessage = (event) => {
             const frame = JSON.parse(event.data);
             console.log(frame);
+
+            // Store the first 10 objects in state
+            setFrameObjects(prevFrameObjects => {
+                const updatedFrameObjects = [...prevFrameObjects, frame].slice(0, 10);
+                return updatedFrameObjects;
+            });
         };
 
         socket.onerror = (error) => {
@@ -35,9 +43,18 @@ const WebSocketComponent = () => {
 
     return (
         <div>
-            heyyy thereee!! web socket connection set!!
+            <h2>First 10 Objects of Frame:</h2>
+            <ul>
+                {frameObjects.map((frameObject, index) => (
+                    <li key={index}>{JSON.stringify(frameObject)}</li>
+                ))}
+            </ul>
+            <div>
+                heyyy thereee!! web socket connection set!!
+            </div>
         </div>
     );
 };
 
 export default WebSocketComponent;
+
