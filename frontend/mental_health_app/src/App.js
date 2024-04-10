@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
 function App() {
+  const navigateToCats = () => {
+    window.location.href = process.env.PUBLIC_URL + '/cats.html';
+  };
+
+  const navigateToSad = () => {
+    window.location.href = process.env.PUBLIC_URL + '/feelbad.html';
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App-full-screen">
+      <p className="question">
+        How are you feeling today?
+      </p>
+      <div className="answer-buttons">
+        <button onClick={navigateToCats} className="answer-button good">Good</button>
+        <button onClick={navigateToSad} className="answer-button bad">Bad</button>
+      </div>
     </div>
   );
 }
-
 export default App;
