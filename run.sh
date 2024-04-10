@@ -5,7 +5,7 @@ then
 fi
 
 echo "Navigating to the project directory..."
-cd mental_health_app/frontend/mental_health_app || exit
+cd frontend/mental_health_app || exit
 
 echo "Installing React-scripts..."
 npm install react-scripts
