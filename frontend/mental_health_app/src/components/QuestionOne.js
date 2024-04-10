@@ -6,7 +6,7 @@ function QuestionOne() {
   let navigate = useNavigate();
 
   return (
-    <div>
+    <div className="root">
       <div className="question">
         How are you feeling today?
       </div>
