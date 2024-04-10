@@ -8,38 +8,32 @@
 // Display 4, Location: 17 Hillhouse
 // Server_Name: cpsc484-04.yale.internal
 
-// var becton_server = "cpsc484-02.yale.internal";
-//
-// var becton_url = "ws://" + becton_server +  ":8888/frames";
-//
-// var socket = new WebSocket(becton_url);
+var hillhouse_server = "cpsc484-03.stdusr.yale.internal";
 
-var socket = new WebSocket("ws://cpsc484-04.yale.internal:8888/frames");
+var hillhouse_url = "http://" + hillhouse_server +  ":8888/frames";
 
-// The following expansion on this code snippet
+// The following expansion on this code snippeta
 // creates a connection to [cpsc484-01.yale.internal]:8888/frames
 // and prints the details of each raw frame collected
 // by the Kinect camera on the HCI display.
 
+$(document).ready(function () {
+    var socket = new WebSocket(hillhouse_url);
 
-// var host = "cpsc484-01.yale.internal:8888";
-//
-// $(document).ready(function () {
-//     frames.start();
-// });
-//
-// var frames = {
-//     socket: null,
-//
-//     start: function () {
-//         var url = "ws://" + host + "/frames";
-//         frames.socket = new WebSocket(url);
-//         frames.socket.onmessage = function (event) {
-//             frames.show(JSON.parse(event.data));
-//         }
-//     },
-//
-//     show: function (frame) {
-//         console.log(frame);
-//     }
-// };
+    socket.onmessage = function (event) {
+        var frame = JSON.parse(event.data);
+        console.log(frame);
+    };
+
+    socket.onerror = function (error) {
+        console.log('WebSocket Error: ' + error);
+    };
+
+    socket.onopen = function (event) {
+        console.log('WebSocket connection established');
+    };
+
+    socket.onclose = function (event) {
+        console.log('WebSocket connection closed');
+    };
+});
