@@ -12,6 +12,7 @@ function App() {
   return (
     <Router>
 
+
       <div className="min-h-screen text-white bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600">
         <header className="p-5 text-4xl font-bold text-center bg-gray-900 bg-opacity-75 shadow-lg">
           Mental Health App
@@ -29,6 +30,7 @@ function App() {
         </main>
 
         <WebSocketComponent />
+
 
       </div>
     </Router>
@@ -52,5 +54,9 @@ function App() {
 
 
 
+<<<<<<< HEAD
 export default App;
 
+=======
+export default App;
+>>>>>>> b537e5c (boilerplate code for responding to actions added)

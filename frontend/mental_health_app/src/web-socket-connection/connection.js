@@ -38,6 +38,11 @@ const WebSocketComponent = () => {
 
 
 
+
+            // GET COMMAND illicited by left wrist
+
+
+
             // Store the first 10 objects in state
             setFrameObjects(prevFrameObjects => {
                 const updatedFrameObjects = [...prevFrameObjects, frame].slice(0, 10);
@@ -89,17 +94,20 @@ const WebSocketComponent = () => {
 
 const get_left_wrist_command =  function(frame){
 
+
     console.log("get left wrist command called")
 
     var command = null;
     if(frame.people.length<1)
     {
         console.log("frame received, no people")
+
         return command;
     }
 
     // normalize by subtracting the root (pelvis) joint coordinates
     var pelvis_x = frame.people[0].joints[0].position.x;
+
 
     // console.log("pelvis x coordinates are", pelvis_x)
 
@@ -119,9 +127,12 @@ const get_left_wrist_command =  function(frame){
 
 
 
+
     if (left_wrist_z < 100)
     {
+
         console.log("hand too low")
+
         return command
     }
 
@@ -151,8 +162,8 @@ const get_left_wrist_command =  function(frame){
     return command
 
 
-
 }
+
 
 
 
@@ -188,6 +199,7 @@ function sendWristCommand(command){
   console.log("the direction taken is:", direction)
 
 }
+
 
 
 
