@@ -24,9 +24,11 @@ function App() {
             <Route path="/positive" element={<ResponsePositive />} />
             <Route path="/negative" element={<ResponseNegative />} />
             <Route path="/people" element={<PeopleTracker />} />
-            <WebSocketComponent />
+
           </Routes>
         </main>
+
+        <WebSocketComponent />
 
       </div>
     </Router>
