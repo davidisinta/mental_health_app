@@ -43,20 +43,5 @@ function App() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
 export default App;
 
-=======
-export default App;
->>>>>>> b537e5c (boilerplate code for responding to actions added)
