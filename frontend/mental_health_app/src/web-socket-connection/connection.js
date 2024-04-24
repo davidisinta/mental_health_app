@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
-
-var direction = ''
+import { useHandRaise } from '../hand/HandRaiseContext';
 
 const WebSocketComponent = () => {
-    const [frameObjects, setFrameObjects] = useState([]);
+    const { setWhichHandRaised } = useHandRaise();
 
     useEffect(() => {
         // WebSocket connection details
@@ -24,16 +22,16 @@ const WebSocketComponent = () => {
             const frame = JSON.parse(event.data);
             if(left_hand_raised(frame)) {
                 console.log("Left hand raised...");
+                setWhichHandRaised(1);
+            } else {
+                setWhichHandRaised(0);
             }
             if(right_hand_raised(frame)) {
                 console.log("Right hand raised...");
+                setWhichHandRaised(2);
+            } else {
+                setWhichHandRaised(0);
             }
-
-            // Store the first 10 objects in state
-            setFrameObjects(prevFrameObjects => {
-                const updatedFrameObjects = [...prevFrameObjects, frame].slice(0, 10);
-                return updatedFrameObjects;
-            });
         };
 
         socket.onerror = (error) => {
@@ -43,6 +41,8 @@ const WebSocketComponent = () => {
         socket.onclose = () => {
             console.log('WebSocket connection closed');
         };
+
+        
 
         // Clean up function
         return () => {
@@ -62,8 +62,9 @@ const left_hand_raised =  function(frame){
         console.log("frame received, no people")
         return false;
     }
-
-    var wrist_above_hips = avg_left_hand_height - avg_waist_height
+    var left_hand = avg_left_hand_height(frame);
+    var hips = avg_waist_height(frame);
+    var wrist_above_hips = hips - left_hand;
 
     // This value may need to be tweaked
     if (wrist_above_hips > 400){
@@ -78,8 +79,10 @@ const right_hand_raised =  function(frame){
         console.log("frame received, no people")
         return false;
     }
-
-    var wrist_above_hips = avg_right_hand_height - avg_waist_height
+    var right_hand = avg_right_hand_height(frame);
+    var hips = avg_waist_height(frame)
+    console.log("avg right: ", right_hand, " avg waist: ", hips);
+    var wrist_above_hips = hips - right_hand;
 
     // This value may need to be tweaked
     if (wrist_above_hips > 400){
