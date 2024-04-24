@@ -25,7 +25,7 @@ const WebSocketComponent = () => {
             if (left_hand_raised(frame)) {
                 noCount = 0;
                 leftCount ++;
-                if(leftCount > 5) {
+                if(leftCount > 25) {
                     console.log("Left hand raised...");
                     leftCount = 0;
                     setWhichHandRaised(1);
@@ -33,14 +33,14 @@ const WebSocketComponent = () => {
             } else if (right_hand_raised(frame)) {
                 noCount = 0;
                 rightCount ++;
-                if(rightCount > 5) {
+                if(rightCount > 25) {
                     console.log("Right hand raised...");
                     rightCount = 0;
                     setWhichHandRaised(2);
                 }
             } else {
                 noCount ++;
-                if(noCount == 30) {
+                if(noCount == 25) {
                     setWhichHandRaised(0);
                     noCount = 0;
                 }

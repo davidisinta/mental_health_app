@@ -4,21 +4,24 @@ import { useHand } from '../hand/HandRaiseContext';
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const { setWhichHandRaised } = useHand();
   const { whichHandRaised} = useHand();
 
   useEffect(() => {
     // Code to run when `whichHandRaised` changes
     console.log(`The hand raised has changed to: ${whichHandRaised}`);
 
-    // Example action based on the value of `whichHandRaised`
     switch (whichHandRaised) {
         case 0:
             console.log("No hand is currently raised.");
             break;
         case 1:
+          setWhichHandRaised(0);
             navigate("/question-one");
+            
             break;
         case 2:
+          setWhichHandRaised(0);
             navigate("/question-one");
             break;
         default:
