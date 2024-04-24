@@ -23,9 +23,9 @@ function Angry() {
         Breathing Technique To Help Calm Down
       </div>
       <div className="mb-4 text-lg text-center">
-        Bulldog Balance says: "Establish a bedtime routine and stick to it. This
-        can include activities like reading, taking a warm bath, or practicing
-        relaxation techniques."
+        Take a deep breath in through your nose for a count of four, hold for a
+        count of four, then exhale slowly through your mouth for a count of
+        four. Repeat several times until you feel more relaxed.
       </div>
       <br />
       <div className="flex justify-center w-full max-w-md">
