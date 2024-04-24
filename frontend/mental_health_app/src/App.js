@@ -11,6 +11,14 @@ import QuestionFourPos from "./components/QuestionFourPos";
 import QuestionFourNeg from "./components/QuestionFourNeg";
 import ResponsePositive from "./components/ResponsePositive";
 import ResponseNegative from "./components/ResponseNegative";
+import Schoolwork from "./components/Schoolwork";
+import SocialLife from "./components/SocialLife";
+import Sleep from "./components/Sleep";
+import Angry from "./components/Angry";
+import Stressed from "./components/Stressed";
+import Sad from "./components/Sad";
+import Other from "./components/Other";
+
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
@@ -44,6 +52,13 @@ function App() {
             <Route path="/question-three-neg" element={<QuestionThreeNeg />} />
             <Route path="/question-four-pos" element={<QuestionFourPos />} />
             <Route path="/question-four-neg" element={<QuestionFourNeg />} />
+            <Route path="/schoolwork" element={<Schoolwork />} />
+            <Route path="/social-life" element={<SocialLife />} />
+            <Route path="/sleep" element={<Sleep />} />
+            <Route path="/angry" element={<Angry />} />
+            <Route path="/stressed" element={<Stressed />} />
+            <Route path="/sad" element={<Sad />} />
+            <Route path="/other" element={<Other />} />
             <Route path="/positive" element={<ResponsePositive />} />
             <Route path="/negative" element={<ResponseNegative />} />
             <Route path="*" element={<NotFound />} />

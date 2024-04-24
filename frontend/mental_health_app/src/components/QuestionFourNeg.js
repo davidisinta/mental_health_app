@@ -14,28 +14,28 @@ function QuestionOne() {
       </div>
       <div className="flex w-full h-full px-20">
         <button
-          onClick={() => navigate("/none")}
+          onClick={() => navigate("/angry")}
           className="w-1/4 mr-4 text-4xl font-semibold transition duration-500 ease-in-out transform border-4 border-purple-600 rounded-lg shadow-xl h-3/5 bg-gradient-to-bl hover:scale-105 hover:bg-gradient-to-br from-purple-600 to-purple-400 hover:text-yellow-400 hover:shadow-2xl"
           style={{ backdropFilter: "blur(10px)" }}
         >
           Angry
         </button>
         <button
-          onClick={() => navigate("/none")}
+          onClick={() => navigate("/stressed")}
           className="w-1/4 mr-4 text-4xl font-semibold transition duration-500 ease-in-out transform border-4 border-blue-400 rounded-lg shadow-xl h-3/5 bg-gradient-to-bl hover:scale-105 hover:bg-gradient-to-br from-blue-400 to-blue-200 hover:text-yellow-400 hover:shadow-2xl"
           style={{ backdropFilter: "blur(10px)" }}
         >
           Stressed
         </button>
         <button
-          onClick={() => navigate("/none")}
+          onClick={() => navigate("/sad")}
           className="w-1/4 mr-4 text-4xl font-semibold transition duration-500 ease-in-out transform border-4 border-pink-400 rounded-lg shadow-xl h-3/5 bg-gradient-to-bl hover:scale-105 hover:bg-gradient-to-br from-pink-400 to-pink-200 hover:text-yellow-400 hover:shadow-2xl"
           style={{ backdropFilter: "blur(10px)" }}
         >
           Sad
         </button>
         <button
-          onClick={() => navigate("/none")}
+          onClick={() => navigate("/other")}
           className="w-1/4 text-4xl font-semibold transition duration-500 ease-in-out transform border-4 border-gray-300 rounded-lg shadow-xl h-3/5 bg-gradient-to-bl hover:scale-105 hover:bg-gradient-to-br from-gray-400 to-gray-200 hover:text-yellow-400 hover:shadow-2xl"
           style={{ backdropFilter: "blur(10px)" }}
         >
