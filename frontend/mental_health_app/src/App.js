@@ -9,7 +9,6 @@ import PeopleTracker from "./components/PeopleTracker";
 import WebSocketComponent from "./web-socket-connection/connection";
 import NotFound from "./components/NotFound";
 import NavBar from "./components/Navbar";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
         <header className="p-6 text-4xl font-bold text-center bg-black bg-opacity-75 shadow-lg">
           BulldogBalance
         </header>
-        <main className="flex flex-col items-center justify-center flex-grow p-5 mx-auto">
+        <div className="flex flex-grow overflow-hidden">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/websocket" element={<WebSocketComponent />} />
@@ -29,8 +28,7 @@ function App() {
             <Route path="/people" element={<PeopleTracker />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </main>
-        <Footer />
+        </div>
       </div>
     </Router>
   );
