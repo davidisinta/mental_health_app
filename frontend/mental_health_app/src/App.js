@@ -2,14 +2,16 @@ import React from "react";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
+import WebSocketComponent from "./web-socket-connection/connection";
 import QuestionOne from "./components/QuestionOne";
+import QuestionTwo from "./components/QuestionTwo";
+import QuestionThreePos from "./components/QuestionThreePos";
+import QuestionThreeNeg from "./components/QuestionThreeNeg";
 import ResponsePositive from "./components/ResponsePositive";
 import ResponseNegative from "./components/ResponseNegative";
-import PeopleTracker from "./components/PeopleTracker";
-import WebSocketComponent from "./web-socket-connection/connection";
-import NotFound from "./components/NotFound";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 import bulldogBalanceLogo from "./img/bulldogBalance.png";
 
 function App() {
@@ -35,9 +37,11 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/websocket" element={<WebSocketComponent />} />
             <Route path="/question-one" element={<QuestionOne />} />
+            <Route path="/question-two" element={<QuestionTwo />} />
+            <Route path="/question-three-pos" element={<QuestionThreePos />} />
+            <Route path="/question-three-neg" element={<QuestionThreeNeg />} />
             <Route path="/positive" element={<ResponsePositive />} />
             <Route path="/negative" element={<ResponseNegative />} />
-            <Route path="/people" element={<PeopleTracker />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
