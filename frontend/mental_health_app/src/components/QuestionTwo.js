@@ -10,7 +10,7 @@ function QuestionOne() {
         Do you want to talk about it more?
       </div>
       <div className="mb-6 text-lg text-center">
-        Raise your hand to interact!
+        Raise your hand and hold for 3 seconds to interact!
       </div>
       <div className="flex w-full h-full px-20">
         <button

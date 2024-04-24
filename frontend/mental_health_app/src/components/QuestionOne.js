@@ -10,10 +10,10 @@ function QuestionOne() {
         How are you feeling today?
       </div>
       <div className="mb-6 text-lg text-center">
-        Raise your <span className="font-semibold text-purple-600">left</span>{" "}
-        hand to answer "
-        <span className="font-semibold">Could Be Better...</span>" or your{" "}
-        <span className="font-semibold text-blue-400">right</span> hand to
+        For 3 seconds, hold your{" "}
+        <span className="font-semibold text-purple-600">left</span> hand to
+        answer "<span className="font-semibold">Could Be Better...</span>" or
+        your <span className="font-semibold text-blue-400">right</span> hand to
         answer "<span className="font-semibold">Great!</span>".
       </div>
       <div className="flex w-full h-full px-20">
