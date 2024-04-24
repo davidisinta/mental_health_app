@@ -8,7 +8,9 @@ const WebSocketComponent = () => {
         // WebSocket connection details
         const hillhouse_server = "cpsc484-03.stdusr.yale.internal";
         const hillhouse_url = "ws://" + hillhouse_server +  ":8888/frames";
-        var value = 0;
+        var noCount = 0;
+        var leftCount = 0;
+        var rightCount = 0;
         // Create WebSocket connection
         const socket = new WebSocket(hillhouse_url);
 
@@ -21,18 +23,26 @@ const WebSocketComponent = () => {
 
             const frame = JSON.parse(event.data);
             if (left_hand_raised(frame)) {
-                value = 0;
-                console.log("Left hand raised...");
-                setWhichHandRaised(1);
+                noCount = 0;
+                leftCount ++;
+                if(leftCount > 5) {
+                    console.log("Left hand raised...");
+                    leftCount = 0;
+                    setWhichHandRaised(1);
+                }
             } else if (right_hand_raised(frame)) {
-                value = 0;
-                console.log("Right hand raised...");
-                setWhichHandRaised(2);
+                noCount = 0;
+                rightCount ++;
+                if(rightCount > 5) {
+                    console.log("Right hand raised...");
+                    rightCount = 0;
+                    setWhichHandRaised(2);
+                }
             } else {
-                value ++;
-                if(value == 30) {
+                noCount ++;
+                if(noCount == 30) {
                     setWhichHandRaised(0);
-                    value = 0;
+                    noCount = 0;
                 }
             }
         };

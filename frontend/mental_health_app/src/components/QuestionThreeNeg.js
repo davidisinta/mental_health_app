@@ -1,8 +1,35 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useHand } from '../hand/HandRaiseContext';
 
 function QuestionThreeNeg() {
   const navigate = useNavigate();
+  const { whichHandRaised} = useHand();
+
+  useEffect(() => {
+    // Code to run when `whichHandRaised` changes
+    console.log(`The hand raised has changed to: ${whichHandRaised}`);
+
+    switch (whichHandRaised) {
+        case 0:
+            console.log("No hand is currently raised.");
+            break;
+        case 1:
+            navigate("/question-four-neg");
+            break;
+        case 2:
+            navigate("/question-four-neg");
+            break;
+        case 3:
+          navigate("/question-four-neg");
+          break;
+        case 4:
+            navigate("/question-four-neg");
+            break;
+        default:
+            console.log("Unexpected value.");
+    }
+  }, [whichHandRaised]);
 
   return (
     <div className="flex flex-col items-center w-screen h-screen text-white bg-gradient-to-r from-purple-500 via-blue-300 to-pink-400">
