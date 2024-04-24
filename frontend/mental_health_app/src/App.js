@@ -18,7 +18,6 @@ import Angry from "./components/Angry";
 import Stressed from "./components/Stressed";
 import Sad from "./components/Sad";
 import Other from "./components/Other";
-
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
