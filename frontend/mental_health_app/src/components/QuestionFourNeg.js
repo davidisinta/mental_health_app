@@ -5,6 +5,7 @@ import { useHand } from '../hand/HandRaiseContext';
 function QuestionFourNeg() {
   const navigate = useNavigate();
   const { whichHandRaised} = useHand();
+  const { setWhichHandRaised} = useHand();
 
   useEffect(() => {
     // Code to run when `whichHandRaised` changes
@@ -15,15 +16,19 @@ function QuestionFourNeg() {
             console.log("No hand is currently raised.");
             break;
         case 1:
+            setWhichHandRaised(0);
             navigate("/angry");
             break;
         case 2:
+            setWhichHandRaised(0);
             navigate("/stressed");
             break;
         case 3:
+            setWhichHandRaised(0);
             navigate("/sad");
             break;
         case 4:
+            setWhichHandRaised(0);
             navigate("/other");
             break;
         default:
