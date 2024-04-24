@@ -22,7 +22,8 @@ const WebSocketComponent = () => {
         socket.onmessage = (event) => {
 
             const frame = JSON.parse(event.data);
-            if (left_hand_raised(frame)) {
+            // value is 1200 on far left -900 on far right, but middle is 300
+            if (left_hand_raised(frame) && avg_left_hand_x > 600) {
                 noCount = 0;
                 leftCount ++;
                 if(leftCount > 15) {
@@ -30,13 +31,29 @@ const WebSocketComponent = () => {
                     leftCount = 0;
                     setWhichHandRaised(1);
                 }
+            } else if (left_hand_raised(frame)) {
+                noCount = 0;
+                leftCount ++;
+                if(leftCount > 15) {
+                    console.log("Left hand raised...");
+                    leftCount = 0;
+                    setWhichHandRaised(2);
+                }
+            } else if (right_hand_raised(frame)&& avg_right_hand_x > -200) {
+                noCount = 0;
+                rightCount ++;
+                if(rightCount > 15) {
+                    console.log("Right hand raised...");
+                    rightCount = 0;
+                    setWhichHandRaised(3);
+                }
             } else if (right_hand_raised(frame)) {
                 noCount = 0;
                 rightCount ++;
                 if(rightCount > 15) {
                     console.log("Right hand raised...");
                     rightCount = 0;
-                    setWhichHandRaised(2);
+                    setWhichHandRaised(4);
                 }
             } else {
                 noCount ++;
@@ -94,7 +111,7 @@ const right_hand_raised =  function(frame){
     }
     var right_hand = avg_right_hand_height(frame);
     var hips = avg_waist_height(frame)
-    console.log("avg right: ", right_hand, " avg waist: ", hips);
+    //console.log("avg right: ", right_hand, " avg waist: ", hips);
     var wrist_above_hips = hips - right_hand;
 
     // This value may need to be tweaked
@@ -123,6 +140,15 @@ const avg_left_hand_height = function(frame) {
     return (elbow_left+wrist_left+hand_left+hand_tip_left)/4;
 }
 
+const avg_left_hand_x = function(frame) {
+    // elbow_right, wrist_right, hand_right, handTip_right, Thumb_right
+    var wrist_left = frame.people[0].joints[7].position.x;
+    var hand_left = frame.people[0].joints[8].position.x;
+    var hand_tip_left = frame.people[0].joints[9].position.x;
+
+    return (wrist_left+hand_left+hand_tip_left)/3;
+}
+
 const avg_right_hand_height = function(frame) {
     // elbow_right, wrist_right, hand_right, handTip_right, Thumb_right
     var elbow_right = frame.people[0].joints[13].position.y;
@@ -131,6 +157,15 @@ const avg_right_hand_height = function(frame) {
     var hand_tip_right = frame.people[0].joints[16].position.y;
 
     return (elbow_right+wrist_right+hand_right+hand_tip_right)/4;
+}
+
+const avg_right_hand_x = function(frame) {
+    // elbow_right, wrist_right, hand_right, handTip_right, Thumb_right
+    var wrist_right = frame.people[0].joints[14].position.x;
+    var hand_right = frame.people[0].joints[15].position.x;
+    var hand_tip_right = frame.people[0].joints[16].position.x;
+
+    return (wrist_right+hand_right+hand_tip_right)/3;
 }
 
 export default WebSocketComponent;
