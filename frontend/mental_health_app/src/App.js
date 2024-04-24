@@ -7,6 +7,8 @@ import QuestionOne from "./components/QuestionOne";
 import QuestionTwo from "./components/QuestionTwo";
 import QuestionThreePos from "./components/QuestionThreePos";
 import QuestionThreeNeg from "./components/QuestionThreeNeg";
+import QuestionFourPos from "./components/QuestionFourPos";
+import QuestionFourNeg from "./components/QuestionFourNeg";
 import ResponsePositive from "./components/ResponsePositive";
 import ResponseNegative from "./components/ResponseNegative";
 import NavBar from "./components/Navbar";
@@ -40,6 +42,8 @@ function App() {
             <Route path="/question-two" element={<QuestionTwo />} />
             <Route path="/question-three-pos" element={<QuestionThreePos />} />
             <Route path="/question-three-neg" element={<QuestionThreeNeg />} />
+            <Route path="/question-four-pos" element={<QuestionFourPos />} />
+            <Route path="/question-four-neg" element={<QuestionFourNeg />} />
             <Route path="/positive" element={<ResponsePositive />} />
             <Route path="/negative" element={<ResponseNegative />} />
             <Route path="*" element={<NotFound />} />
