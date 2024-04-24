@@ -4,8 +4,8 @@ import mentalHealthBarcode from "../img/mentalHealthBarcode.png";
 function ResponsePositive() {
   return (
     <div
-      className="flex flex-col items-center justify-center w-screen h-screen p-4 text-center text-white bg-gradient-to-br from-yellow-500 via-red-500 to-pink-600"
-      style={{ backdropFilter: "blur(12px)", marginTop: "-5%" }}
+      className="flex flex-col items-center justify-center w-screen h-screen p-4 text-center text-white bg-gradient-to-br from-purple-500 via-blue-300 to-pink-400"
+      style={{ backdropFilter: "blur(12px)", marginTop: "-8%" }}
     >
       <h1 className="mb-4 text-2xl font-bold">
         Happy to hear you're feeling good! 😊
