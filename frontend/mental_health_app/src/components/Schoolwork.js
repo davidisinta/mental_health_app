@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function QuestionOne() {
+function Schoolwork() {
   const navigate = useNavigate();
 
   return (
@@ -36,4 +36,4 @@ function QuestionOne() {
   );
 }
 
-export default QuestionOne;
+export default Schoolwork;

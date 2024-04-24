@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function QuestionOne() {
+function Stressed() {
   const navigate = useNavigate();
 
   return (
@@ -10,7 +10,7 @@ function QuestionOne() {
         How are you feeling today?
       </div>
       <div className="mb-6 text-lg text-center">
-        For 3 seconds, hold your{" "}
+        For 3 seconds, hold your
         <span className="font-semibold text-purple-600">left</span> hand to
         answer "<span className="font-semibold">Could Be Better...</span>" or
         your <span className="font-semibold text-blue-400">right</span> hand to
@@ -36,4 +36,4 @@ function QuestionOne() {
   );
 }
 
-export default QuestionOne;
+export default Stressed;

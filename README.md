@@ -19,6 +19,7 @@ npm start
 npm install @mui/icons-material
 npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
 npm install @emotion/react @emotion/styled
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
 ```
 
 You should now be able to navigate to http://localhost:3000
