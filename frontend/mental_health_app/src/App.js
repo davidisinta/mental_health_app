@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HandProvider  } from './hand/HandRaiseContext';
 import HomePage from "./components/HomePage";
 import WebSocketComponent from "./web-socket-connection/connection";
 import QuestionOne from "./components/QuestionOne";
@@ -42,26 +43,29 @@ function App() {
           />
         </header>
         <div className="flex flex-grow overflow-hidden">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/websocket" element={<WebSocketComponent />} />
-            <Route path="/question-one" element={<QuestionOne />} />
-            <Route path="/question-two" element={<QuestionTwo />} />
-            <Route path="/question-three-pos" element={<QuestionThreePos />} />
-            <Route path="/question-three-neg" element={<QuestionThreeNeg />} />
-            <Route path="/question-four-pos" element={<QuestionFourPos />} />
-            <Route path="/question-four-neg" element={<QuestionFourNeg />} />
-            <Route path="/schoolwork" element={<Schoolwork />} />
-            <Route path="/social-life" element={<SocialLife />} />
-            <Route path="/sleep" element={<Sleep />} />
-            <Route path="/angry" element={<Angry />} />
-            <Route path="/stressed" element={<Stressed />} />
-            <Route path="/sad" element={<Sad />} />
-            <Route path="/other" element={<Other />} />
-            <Route path="/positive" element={<ResponsePositive />} />
-            <Route path="/negative" element={<ResponseNegative />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <HandProvider>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/websocket" element={<WebSocketComponent />} />
+              <Route path="/question-one" element={<QuestionOne />} />
+              <Route path="/question-two" element={<QuestionTwo />} />
+              <Route path="/question-three-pos" element={<QuestionThreePos />} />
+              <Route path="/question-three-neg" element={<QuestionThreeNeg />} />
+              <Route path="/question-four-pos" element={<QuestionFourPos />} />
+              <Route path="/question-four-neg" element={<QuestionFourNeg />} />
+              <Route path="/schoolwork" element={<Schoolwork />} />
+              <Route path="/social-life" element={<SocialLife />} />
+              <Route path="/sleep" element={<Sleep />} />
+              <Route path="/angry" element={<Angry />} />
+              <Route path="/stressed" element={<Stressed />} />
+              <Route path="/sad" element={<Sad />} />
+              <Route path="/other" element={<Other />} />
+              <Route path="/positive" element={<ResponsePositive />} />
+              <Route path="/negative" element={<ResponseNegative />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <WebSocketComponent/>
+          </HandProvider>
         </div>
         <Footer />
       </div>
