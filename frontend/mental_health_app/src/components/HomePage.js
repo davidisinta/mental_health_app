@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
@@ -7,6 +7,19 @@ const HomePage = () => {
   const handlePlayClick = () => {
     navigate("/question-one");
   };
+
+  useEffect(() => {
+    const delay = 5000; // 5 seconds delay
+    const timer = setTimeout(() => {
+      const randomNumber = Math.floor(Math.random() * 11); // Generates a random number between 0 and 10
+      if (randomNumber > 4) {
+        // If the random number is greater than 4, simulate a click on the button
+        handlePlayClick();
+      }
+    }, delay);
+
+    return () => clearTimeout(timer); // Clean up the timer on component unmount
+  }, []); // Empty dependency array ensures the effect runs only once after initial render
 
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600">
