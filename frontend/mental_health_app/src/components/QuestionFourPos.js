@@ -1,38 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useHand } from '../hand/HandRaiseContext';
+import { useHand } from "../hand/HandRaiseContext";
 
 function QuestionFourPos() {
   const navigate = useNavigate();
-  const { whichHandRaised} = useHand();
-  const { setWhichHandRaised} = useHand();
+  const { whichHandRaised } = useHand();
+  const { setWhichHandRaised } = useHand();
 
   useEffect(() => {
     // Code to run when `whichHandRaised` changes
     console.log(`The hand raised has changed to: ${whichHandRaised}`);
 
     switch (whichHandRaised) {
-        case 0:
-            console.log("No hand is currently raised.");
-            break;
-        case 1:
-            setWhichHandRaised(0);
-            navigate("/schoolwork");
-            break;
-        case 2:
-            setWhichHandRaised(0);
-            navigate("/social-life");
-            break;
-        case 3:
-            setWhichHandRaised(0);
-            navigate("/sleep");
-            break;
-        case 4:
-            setWhichHandRaised(0);
-            navigate("/positive");
-            break;
-        default:
-            console.log("Unexpected value.");
+      case 0:
+        console.log("No hand is currently raised.");
+        break;
+      case 1:
+        setWhichHandRaised(0);
+        navigate("/schoolwork");
+        break;
+      case 2:
+        setWhichHandRaised(0);
+        navigate("/social-life");
+        break;
+      case 3:
+        setWhichHandRaised(0);
+        navigate("/sleep");
+        break;
+      case 4:
+        setWhichHandRaised(0);
+        navigate("/positive");
+        break;
+      default:
+        console.log("Unexpected value.");
     }
   }, [whichHandRaised]);
 
