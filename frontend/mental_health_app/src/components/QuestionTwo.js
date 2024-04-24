@@ -16,10 +16,12 @@ function QuestionTwo() {
             console.log("No hand is currently raised.");
             break;
         case 1:
+        case 2:
             setWhichHandRaised(0);
             navigate("/negative");
             break;
-        case 2:
+        case 3:
+        case 4:
             setWhichHandRaised(0);
             navigate("/question-three-neg");
             break;
