@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HandProvider  } from './hand/HandRaiseContext';
 import HomePage from "./components/HomePage";
 import QuestionOne from "./components/QuestionOne";
 import ResponsePositive from "./components/ResponsePositive";
@@ -19,15 +20,18 @@ function App() {
           BulldogBalance
         </header>
         <div className="flex flex-grow overflow-hidden">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/websocket" element={<WebSocketComponent />} />
-            <Route path="/question-one" element={<QuestionOne />} />
-            <Route path="/positive" element={<ResponsePositive />} />
-            <Route path="/negative" element={<ResponseNegative />} />
-            <Route path="/people" element={<PeopleTracker />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <HandProvider>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/websocket" element={<WebSocketComponent />} />
+              <Route path="/question-one" element={<QuestionOne />} />
+              <Route path="/positive" element={<ResponsePositive />} />
+              <Route path="/negative" element={<ResponseNegative />} />
+              <Route path="/people" element={<PeopleTracker />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <WebSocketComponent/>
+          </HandProvider>
         </div>
       </div>
     </Router>

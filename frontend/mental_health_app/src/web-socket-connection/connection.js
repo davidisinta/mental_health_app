@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useHandRaise } from '../hand/HandRaiseContext';
+import { useHand } from '../hand/HandRaiseContext';
 
 const WebSocketComponent = () => {
-    const { setWhichHandRaised } = useHandRaise();
+    const { setWhichHandRaised } = useHand();
 
     useEffect(() => {
         // WebSocket connection details
         const hillhouse_server = "cpsc484-03.stdusr.yale.internal";
         const hillhouse_url = "ws://" + hillhouse_server +  ":8888/frames";
-
+        var value = 0;
         // Create WebSocket connection
         const socket = new WebSocket(hillhouse_url);
 
@@ -20,17 +20,20 @@ const WebSocketComponent = () => {
         socket.onmessage = (event) => {
 
             const frame = JSON.parse(event.data);
-            if(left_hand_raised(frame)) {
+            if (left_hand_raised(frame)) {
+                value = 0;
                 console.log("Left hand raised...");
                 setWhichHandRaised(1);
-            } else {
-                setWhichHandRaised(0);
-            }
-            if(right_hand_raised(frame)) {
+            } else if (right_hand_raised(frame)) {
+                value = 0;
                 console.log("Right hand raised...");
                 setWhichHandRaised(2);
             } else {
-                setWhichHandRaised(0);
+                value ++;
+                if(value == 30) {
+                    setWhichHandRaised(0);
+                    value = 0;
+                }
             }
         };
 
