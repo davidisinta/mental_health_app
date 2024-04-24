@@ -1,33 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useHand } from '../hand/HandRaiseContext';
+import { useHand } from "../hand/HandRaiseContext";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const { setWhichHandRaised } = useHand();
-  const { whichHandRaised} = useHand();
+  const { whichHandRaised } = useHand();
 
   useEffect(() => {
     // Code to run when `whichHandRaised` changes
     console.log(`The hand raised has changed to: ${whichHandRaised}`);
 
     switch (whichHandRaised) {
-        case 0:
-            console.log("No hand is currently raised.");
-            break;
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-          setWhichHandRaised(0);
-            navigate("/question-one");
-            
-            break;
-        default:
-            console.log("Unexpected value.");
+      case 0:
+        console.log("No hand is currently raised.");
+        break;
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        setWhichHandRaised(0);
+        navigate("/question-one");
+
+        break;
+      default:
+        console.log("Unexpected value.");
     }
   }, [whichHandRaised]);
-
 
   const handlePlayClick = () => {
     navigate("/question-one");
