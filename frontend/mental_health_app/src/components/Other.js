@@ -34,6 +34,13 @@ function Other() {
         >
           Journaling
         </button>
+        <button
+          onClick={() => navigate("/negative")}
+          className="w-1/4 text-4xl font-semibold transition duration-500 ease-in-out transform border-4 border-gray-300 rounded-lg shadow-xl h-3/5 bg-gradient-to-bl hover:scale-105 hover:bg-gradient-to-br from-gray-400 to-gray-200 hover:text-yellow-400 hover:shadow-2xl"
+          style={{ backdropFilter: "blur(10px)" }}
+        >
+          None
+        </button>
       </div>
     </div>
   );
