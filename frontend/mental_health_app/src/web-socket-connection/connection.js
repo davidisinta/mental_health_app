@@ -46,9 +46,48 @@ const WebSocketComponent = () => {
       }
     };
 
-    socket.onerror = (error) => {
-      console.log("WebSocket Error: " + error);
-    };
+            const frame = JSON.parse(event.data);
+            // value is 1200 on far left -900 on far right, but middle is 300
+            if (left_hand_raised(frame) && avg_left_hand_x > 600) {
+                noCount = 0;
+                leftCount ++;
+                if(leftCount > 15) {
+                    console.log("Left hand raised...");
+                    leftCount = 0;
+                    setWhichHandRaised(1);
+                }
+            } else if (left_hand_raised(frame)) {
+                noCount = 0;
+                leftCount ++;
+                if(leftCount > 15) {
+                    console.log("Left hand raised...");
+                    leftCount = 0;
+                    setWhichHandRaised(2);
+                }
+            } else if (right_hand_raised(frame)&& avg_right_hand_x > -200) {
+                noCount = 0;
+                rightCount ++;
+                if(rightCount > 15) {
+                    console.log("Right hand raised...");
+                    rightCount = 0;
+                    setWhichHandRaised(3);
+                }
+            } else if (right_hand_raised(frame)) {
+                noCount = 0;
+                rightCount ++;
+                if(rightCount > 15) {
+                    console.log("Right hand raised...");
+                    rightCount = 0;
+                    setWhichHandRaised(4);
+                }
+            } else {
+                noCount ++;
+                if(noCount == 15) {
+                    setWhichHandRaised(0);
+                    noCount = 0;
+                }
+            }
+        };
 
     socket.onclose = () => {
       console.log("WebSocket connection closed");
@@ -72,10 +111,22 @@ const left_hand_raised = function (frame) {
   var hips = avg_waist_height(frame);
   var wrist_above_hips = hips - left_hand;
 
+<<<<<<< HEAD
   // This value may need to be tweaked
   if (wrist_above_hips > 400) {
     return true;
   }
+=======
+const right_hand_raised =  function(frame){
+    if(frame.people.length<1) {
+        console.log("frame received, no people")
+        return false;
+    }
+    var right_hand = avg_right_hand_height(frame);
+    var hips = avg_waist_height(frame)
+    //console.log("avg right: ", right_hand, " avg waist: ", hips);
+    var wrist_above_hips = hips - right_hand;
+>>>>>>> d385839 (Added 4 options rather than 2)
 
   return false;
 };
@@ -106,12 +157,30 @@ const avg_waist_height = function (frame) {
   return (pelvis_y + hip_left_y + hip_right_y) / 3;
 };
 
+<<<<<<< HEAD
 const avg_left_hand_height = function (frame) {
   // elbow_right, wrist_right, hand_right, handTip_right, Thumb_right
   var elbow_left = frame.people[0].joints[6].position.y;
   var wrist_left = frame.people[0].joints[7].position.y;
   var hand_left = frame.people[0].joints[8].position.y;
   var hand_tip_left = frame.people[0].joints[9].position.y;
+=======
+const avg_left_hand_x = function(frame) {
+    // elbow_right, wrist_right, hand_right, handTip_right, Thumb_right
+    var wrist_left = frame.people[0].joints[7].position.x;
+    var hand_left = frame.people[0].joints[8].position.x;
+    var hand_tip_left = frame.people[0].joints[9].position.x;
+
+    return (wrist_left+hand_left+hand_tip_left)/3;
+}
+
+const avg_right_hand_height = function(frame) {
+    // elbow_right, wrist_right, hand_right, handTip_right, Thumb_right
+    var elbow_right = frame.people[0].joints[13].position.y;
+    var wrist_right = frame.people[0].joints[14].position.y;
+    var hand_right = frame.people[0].joints[15].position.y;
+    var hand_tip_right = frame.people[0].joints[16].position.y;
+>>>>>>> d385839 (Added 4 options rather than 2)
 
   return (elbow_left + wrist_left + hand_left + hand_tip_left) / 4;
 };
@@ -125,5 +194,14 @@ const avg_right_hand_height = function (frame) {
 
   return (elbow_right + wrist_right + hand_right + hand_tip_right) / 4;
 };
+
+const avg_right_hand_x = function(frame) {
+    // elbow_right, wrist_right, hand_right, handTip_right, Thumb_right
+    var wrist_right = frame.people[0].joints[14].position.x;
+    var hand_right = frame.people[0].joints[15].position.x;
+    var hand_tip_right = frame.people[0].joints[16].position.x;
+
+    return (wrist_right+hand_right+hand_tip_right)/3;
+}
 
 export default WebSocketComponent;
