@@ -31,7 +31,7 @@ function App() {
           </Routes>
         </main>
 
-        <WebSocketComponent />
+        {/*<WebSocketComponent />*/}
 
 
       </div>
