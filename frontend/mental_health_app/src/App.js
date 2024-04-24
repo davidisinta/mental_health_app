@@ -7,6 +7,7 @@ import ResponsePositive from "./components/ResponsePositive";
 import ResponseNegative from "./components/ResponseNegative";
 import PeopleTracker from "./components/PeopleTracker";
 import WebSocketComponent from "./web-socket-connection/connection";
+import AnotherComponent from "./components/Direction";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/positive" element={<ResponsePositive />} />
             <Route path="/negative" element={<ResponseNegative />} />
             <Route path="/people" element={<PeopleTracker />} />
+            <Route path="/another" element={<AnotherComponent />} />
 
           </Routes>
         </main>
